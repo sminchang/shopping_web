@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NodeJS: {{title}}</title>
+</head>
+
+<body>
+
+    <form id="form" action="/mypage/update" method="post" style="border: 1px solid #000; padding: 10px; width: 200px;">
+        <input type="hidden" name="id" value="{{user.id}}"/>id: {{user.id}}<br>
+        <input type="password" name="password" placeholder="Password" /><br>
+        <input type="password" name="compare" placeholder="Compare" /><br>
+        <input type="text" name="name" placeholder="Name" /><br>
+        <button type="submit">회원정보 수정</button>
+    </form>
+    <p><button><a href="http://localhost:{{port}}/mypage/delete/{{user.id}}">회원탈퇴</a><br></button></p>
+    <p><button><a href="http://localhost:{{port}}/product">게시물 관리</a><br></button></p>
+</body>
+</html>

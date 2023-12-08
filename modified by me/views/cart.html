@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NodeJS: {{title}}</title>
+</head>
+
+<body>
+    <p>{{user.id}}님의 장바구니<br>
+        <form id="cartForm" action="/cart/submit" method="post">
+        {% for productId in product %}
+        <img src="{{productId.dataValues.productId}}" width="300" height="300" style="border: 1px solid #ccc;">
+        <input type="checkbox" id="{{productId.dataValues.id}}" name="id" value="{{productId.dataValues.id}}">
+        {{productId.dataValues.cost}}원
+        {% endfor %}
+        <br><button type="submit" name="action" value="delete">Delete</button>
+        <button type="submit" name="action" value="payment">Payment</button>
+        </form>
+        </p>
+</body>
+
+</html>

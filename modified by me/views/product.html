@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NodeJS: {{title}}</title>
+</head>
+
+<body>
+    <p>
+    <form id="form" action="/product/create" method="post" enctype="multipart/form-data" style="border: 1px solid #000; padding: 10px; width: 200px;">
+        <input style="width: 200px" type="file" name="file" multiple /><br><br>
+        <input type="number" name="cost" placeholder="cost" /><br>
+        <input type="text" name="comment" placeholder="comment" /><br>
+        <button style="width: 200px" type="submit">업로드</button>
+    </form>
+    </p>
+    <p>{{user.id}}님의 게시물<br>
+        {% for id in product %}
+        <img src="{{id.dataValues.productPath}}" width="300" height="300" style="border: 1px solid #ccc;"><br>
+        cost:{{id.dataValues.cost}}원 /
+        comment:{{id.dataValues.comment}}
+        <button><a href="http://localhost:{{port}}/product/delete/{{id.dataValues.id}}">삭제</a></button><br><br>
+        {% endfor %}
+        </p>
+</body>
+
+</html>

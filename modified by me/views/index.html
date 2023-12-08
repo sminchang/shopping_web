@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NodeJS: {{title}}</title>
+</head>
+
+<body>
+    <p>
+        {% if user %}
+        {{user.name}}님 환영합니다!<br>
+        <button><a href="http://localhost:{{port}}/auth/logout">Logout</a></button>
+        <button><a href="http://localhost:{{port}}/mypage">mypage</a></button>
+        <button><a href="http://localhost:{{port}}/cart">mycart</a></button>
+        {% else %}
+            <form id="form" action="auth/login" method="post">
+                <input type="text" name="id" placeholder="ID" /><br>
+                <input type="password" name="password" placeholder="Password" /><br>
+                <button type="submit">Login</button>
+                <button> <a href="http://localhost:{{port}}/user">회원가입</a></button>
+            </form>
+
+            <br>
+        {% endif %}
+    </p>    
+    <p>
+        전체 게시물<br>
+        {% for product in product %}
+        <img src="{{product.dataValues.productPath}}" width="300" height="300" style="border: 1px solid #ccc;">
+        {{product.dataValues.cost}}원 /
+        ({{product.dataValues.comment}})
+        {% if user %}
+        <button><a href="http://localhost:{{port}}/add/{{product.dataValues.id}}">add to cart</a></button>
+        {% endif %}
+        {% endfor %}
+    </p>
+
+
+</body>
+
+</html>
