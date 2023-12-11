@@ -1,5 +1,5 @@
 const express = require('express');
-const Product = require('../models/product');
+const {Cart, Product} = require('../models');
 
 const { isLoggedIn } = require('./helpers');
 
@@ -73,6 +73,9 @@ router.get('/delete/:id', async (req, res, next) => {
             } else {
                 console.log('파일이 성공적으로 삭제되었습니다.');}
             });
+        await Cart.destroy({
+            where: { productId: product.productPath }
+        });
         const result = await Product.destroy({
             where: { id: req.params.id }
         });
