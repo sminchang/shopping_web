@@ -79,7 +79,7 @@ router.get('/delete/:id', async (req, res, next) => {
         const result = await Product.destroy({
             where: { id: req.params.id }
         });
-        if (result) next();
+        if (result) res.redirect('/');
         else next('error');
     } catch (err) {
         console.error(err);
